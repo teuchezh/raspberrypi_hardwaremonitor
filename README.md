@@ -23,7 +23,7 @@ To Do List:
 
 //ENG
 
-Monitor iron for Raspberry Pi and similar cards.
+Hardware monitor for Raspberry Pi and similar SBC.
 Displays information on the LCD2004 display.
 What is displayed?
 Currently done:
