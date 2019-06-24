@@ -2,9 +2,10 @@
 ![PROJECT PHOTO](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/0.png)
 
 * [RUS](#chapter-0)
-* [Установка](#chapter-1)
-* [ENG](#chapter-)
-* [Install](#chapter-)
+* [Системные требования](#chapter-1)
+* [Установка](#chapter-2)
+* [Настройки скрипта](#chapter-3)
+
 
 <a id="chapter-0"></a>
 
@@ -29,30 +30,31 @@
  - *Добавить управление вентилятором.*
  - *Разбить скрипт на куски.*
 
-<a id="chapter-1"></a>
+ <a id="chapter-1"></a>
+ 
+ ### *Системные требования.*
+ * Необходимо наличе установленного *Python.*
+ * Необходимо включить *i2c.*
+ * Необходимо включить *1-Wire.*
+
+<a id="chapter-2"></a>
 
 ### *Установка.*
-`https://github.com/Cherkes001/raspberrypi_hardwaremonitor.git`
+Все команды выполняются в терминале последовательно от root.
+1) Переходим в домашнюю папку:
+`cd home/pi`
+2) Клонируем репозиторий:
+`sudo git clone https://github.com/Cherkes001/raspberrypi_hardwaremonitor.git`
+3) Переходим в папку со скриптом:
+`cd raspberrypi_hardwaremonitor`
+4) Даем права на выполнение скрипту:
+`sudo chmod +x hardware_monitor.py`
+5) Запуск:
+`./hardware_monitor.py`
+
+<a id="chapter-3"></a>
+
+### *Настройки скрипта*
+
 
 > Часть кода скрипта найден на просторах интернета.
-
-<a id="chapter-"></a>
-
-### *Hardware monitor for Raspberry Pi.*
-Displays information on the LCD2004 display.
-What is displayed?
-Currently done:
- - *Displays IP address.*
- - *Output boot RAM.*
- - *Displays the status of the SD card memory.*
- - *Displays the status of the memory of external media (approx. HDD / SSD).*
- - *Output Uptime.*
- - *Display CPU temperature.*
- - *Output temperature from external sensor DS18B20.*
- - *Displays the current date.*
-
-To Do List:
- - *Add fan control.*
- - *Break the script into pieces.*
-
-> Part of the script code found on the Internet.
