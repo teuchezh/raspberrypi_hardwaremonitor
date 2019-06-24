@@ -1,8 +1,13 @@
 # Raspberry Pi Hardware monitor
+![PROJECT PHOTO](htpps://...)
+*[RUS](#chapter-0)
+[Установка](#chapter-1)
+*[ENG](#chapter-)
+[Install](#chapter-)
 
-//RUS
+<a id="chapter-0"></a>
 
-### *Монитор железа для Raspberry Pi и подобных плат.*
+### *Монитор железа для Raspberry Pi.*
 Выводит мнформацию на дисплей LCD2004.
 Что выводится?
 На данный момент сделано:
@@ -15,15 +20,18 @@
  - *Вывод тепературы с внешнего датчика DS18B20.*
  - *Вывод текущей даты.*
 
-To Do List:
+В планах сделать:
  - *Добавить управление вентилятором.*
  - *Разбить скрипт на куски.*
 
+### *Установка.*
+
+
 > Часть кода скрипта найден на просторах интернета.
 
-//ENG
+<a id="chapter-"></a>
 
-### *Hardware monitor for Raspberry Pi and similar SBC.*
+### *Hardware monitor for Raspberry Pi.*
 Displays information on the LCD2004 display.
 What is displayed?
 Currently done:
