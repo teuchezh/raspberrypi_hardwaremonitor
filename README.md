@@ -1,5 +1,6 @@
 # Raspberry Pi Hardware monitor
-![PROJECT PHOTO](htpps://...)
+![PROJECT PHOTO](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/0.png)
+
 *[RUS](#chapter-0)
 [Установка](#chapter-1)
 *[ENG](#chapter-)
@@ -8,6 +9,10 @@
 <a id="chapter-0"></a>
 
 ### *Монитор железа для Raspberry Pi.*
+
+![PIC0](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/1.png)
+![PIC1](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/2.png)
+
 Выводит мнформацию на дисплей LCD2004.
 Что выводится?
 На данный момент сделано:
@@ -23,6 +28,8 @@
 В планах сделать:
  - *Добавить управление вентилятором.*
  - *Разбить скрипт на куски.*
+
+<a id="chapter-1"></a>
 
 ### *Установка.*
 
