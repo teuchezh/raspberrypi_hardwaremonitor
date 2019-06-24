@@ -1,10 +1,10 @@
 # Raspberry Pi Hardware monitor
 ![PROJECT PHOTO](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/0.png)
 
-*[RUS](#chapter-0)
-[Установка](#chapter-1)
-*[ENG](#chapter-)
-[Install](#chapter-)
+* [RUS](#chapter-0)
+* [Установка](#chapter-1)
+* [ENG](#chapter-)
+* [Install](#chapter-)
 
 <a id="chapter-0"></a>
 
@@ -32,7 +32,7 @@
 <a id="chapter-1"></a>
 
 ### *Установка.*
-
+`https://github.com/Cherkes001/raspberrypi_hardwaremonitor.git`
 
 > Часть кода скрипта найден на просторах интернета.
 
