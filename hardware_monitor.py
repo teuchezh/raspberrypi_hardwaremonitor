@@ -133,7 +133,7 @@ def main():
     lcd_byte(0x01, LCD_CMD)
     lcd_string("Uptime:{}".format(get_uptime()),LCD_LINE_1)
     lcd_string("DS18B20 Temp:{}".format(get_dallas()),LCD_LINE_2)
-    lcd_string( str(now.day)+'/'+str(now.month)+'/'+str(now.year)+' '+str(now.hour)+':'+str(now.minute),LCD_LINE_3) #Время и дата
+    lcd_string( str(now.day)+'/'+str(now.month)+'/'+str(now.year)+' '+str(now.hour)+':'+str(now.minute),LCD_LINE_3)
     time.sleep(5)
 if __name__ == '__main__':
 
