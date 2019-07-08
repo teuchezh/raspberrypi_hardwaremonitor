@@ -101,23 +101,23 @@ lrwxrwxrwx 1 root root 0 Nov 29 10:49 w1_bus_master1 -> ../../../devices/w1_bus_
 ### *Возможные ошибки*
 1. Не правильный i2c адрес дисплея или дисплей не найден.
 Укажите свой адрес дисплея (*прим.* обычно *0x27* или *0x3F*) и проверьте соединения.
->Traceback (most recent call last):
+`Traceback (most recent call last):
   File "./dispy.py", line 146, in <module>
     lcd_byte(0x01, LCD_CMD)
   File "./dispy.py", line 99, in lcd_byte
     bus.write_byte(I2C_ADDR, bits_high)
-IOError: [Errno 121] Remote I/O error<
+IOError: [Errno 121] Remote I/O error`
 
 2. Не правильный ID датчика DS18B20 или датчик не найден.
 Укажите свой ID датчка и проверьте соединения. Если данный датчик не используется, то просто отключите его вывод просто закомментировав строку.
->Traceback (most recent call last):
+`Traceback (most recent call last):
   File "./dispy.py", line 142, in <module>
     main()
   File "./dispy.py", line 136, in main
     lcd_string("DS18B20 Temp:{}".format(get_dallas()),LCD_LINE_2)
   File "./dispy.py", line 77, in get_dallas
     tfile=open("/sys/bus/w1/devices/28-0317249ce7ff/w1_slave")
-IOError: [Errno 2] No such file or directory: '/sys/bus/w1/devices/28-0317249ce7ff/w1_slave'<
+IOError: [Errno 2] No such file or directory: '/sys/bus/w1/devices/28-0317249ce7ff/w1_slave'`
 
 <a id="chapter-7"></a>
 
