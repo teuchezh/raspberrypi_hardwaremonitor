@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 # https://raspberrytips.nl/lcd-scherm-20x4-i2c-raspberry-pi/
 # https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load?answertab=votes#tab-top
 # https://github.com/adafruit/Adafruit_Python_SSD1306
@@ -12,6 +13,7 @@ import subprocess
 from subprocess import check_output         # Импортируем библиотеку по работе с внешними процессами
 from re import findall                      # Импортируем библиотеку по работе с регулярными выражениями
 import os
+from datetime import timedelta
 
 I2C_ADDR  = 0x27 # I2C device address
 LCD_WIDTH = 20   # Maximum characters per line
@@ -45,6 +47,11 @@ def get_my_ipwlan():
       val = "No connection!"
     return val
 
+#Запрос загрузки CPU
+def get_cpusage():
+    cpu = run_cmd(["top -bn1 | grep load | awk '{printf \" %.2f\", $(NF-2)}'"])
+    return(cpu)
+
 #Запрос загрузки RAM
 def get_memusage():
     ram = run_cmd ("free -m | awk 'NR==2{print $3\"MB/\"$2\"MB\"}'")
@@ -60,10 +67,16 @@ def get_checkhdd():
     hdd = run_cmd ("df -BMB | grep /mnt/*** | awk '{print $2\"/\"$3, $5}'")
     return (hdd)
 
-#Заппрос Uptime
-def get_uptime():
-    uptime = run_cmd ("uptime | awk 'NR==1{print $3}'")
-    return (uptime)
+#Запрос Uptime
+#def get_uptime():
+#    uptime = run_cmd ("uptime | awk 'NR==1{print $3}'")
+#    return (uptime)
+def get_sysuptime():
+    with open('/proc/uptime', 'r') as f:
+      uptime_seconds = float(f.readline().split()[0])
+      uptime_string = str(timedelta(seconds = uptime_seconds))
+      sysuptime = uptime_string
+    return sysuptime
 
 #Запрос температуры CPU
 def get_temp():
@@ -82,12 +95,12 @@ def get_dallas():
 
 
 def lcd_init():
-  lcd_byte(0x33,LCD_CMD) # 110011 Initialise
-  lcd_byte(0x32,LCD_CMD) # 110010 Initialise
-  lcd_byte(0x06,LCD_CMD) # 000110 Cursor move direction
+  lcd_byte(0x33,LCD_CMD) # 110011 Инициализация
+  lcd_byte(0x32,LCD_CMD) # 110010 Инициализация
+  lcd_byte(0x06,LCD_CMD) # 000110 Направление движения курсора
   lcd_byte(0x0C,LCD_CMD) # 001100 Display On,Cursor Off, Blink Off
   lcd_byte(0x28,LCD_CMD) # 101000 Data length, number of lines, font size
-  lcd_byte(0x01,LCD_CMD) # 000001 Clear display
+  lcd_byte(0x01,LCD_CMD) # 000001 Очистка дисплея
   time.sleep(E_DELAY)
 
 def lcd_byte(bits, mode):
@@ -124,16 +137,17 @@ def main():
     now = datetime.datetime.now()
     temp = get_temp()
 
-    lcd_string("IP:{}".format(get_my_ipwlan()),LCD_LINE_1)
-    lcd_string("RAM:{}".format(get_memusage()),LCD_LINE_2)
-    lcd_string("CPU Temp:{}".format(get_temp()),LCD_LINE_3)
-    lcd_string("SD mem:{}".format(get_checkmem()),LCD_LINE_4)
+    lcd_string("IP:{}".format(get_my_ipwlan()),LCD_LINE_1) #IP-адрес
+    lcd_string("RAM:{}".format(get_memusage()),LCD_LINE_2) #Использование RAM
+    lcd_string("CPU Temp:{}".format(get_temp()),LCD_LINE_3) #Темп-ра CPU
+    lcd_string("SDmem:{}".format(get_checkmem()),LCD_LINE_4) #Использование SD
     time.sleep(5)
 
     lcd_byte(0x01, LCD_CMD)
-    lcd_string("Uptime:{}".format(get_uptime()),LCD_LINE_1)
-    lcd_string("DS18B20 Temp:{}".format(get_dallas()),LCD_LINE_2)
-    lcd_string( str(now.day)+'/'+str(now.month)+'/'+str(now.year)+' '+str(now.hour)+':'+str(now.minute),LCD_LINE_3)
+    lcd_string("UP: {}".format(get_sysuptime()),LCD_LINE_1) #Время работы
+    lcd_string("CPU Load:{}".format(get_cpusage()),LCD_LINE_2) #Время работы
+    #lcd_string("DS18B20 Temp:{}".format(get_dallas()),LCD_LINE_3) #Темп-ра с внешнего датчика
+    lcd_string( str(now.day)+'/'+str(now.month)+'/'+str(now.year)+' '+str(now.hour)+':'+str(now.minute),LCD_LINE_3) #Время и дата
     time.sleep(5)
 if __name__ == '__main__':
 
