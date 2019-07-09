@@ -100,11 +100,11 @@ Raspberry PI  | DS18B20
 1. `sudo modprobe w1-gpio && sudo modprobe w1_therm`<br>
 2. `ls -l /sys/bus/w1/devices/`<br>
 
-Будет выведена похожая информация:
-<p>`total 0
-total 0
-lrwxrwxrwx 1 root root 0 Nov 29 10:49 28-0317249ce7ff -> ../../../devices/w1_bus_master1/28-0317249ce7ff
-lrwxrwxrwx 1 root root 0 Nov 29 10:49 w1_bus_master1 -> ../../../devices/w1_bus_master1`</p>
+Будет выведена похожая информация:<br>
+`total 0<br>
+total 0<br>
+lrwxrwxrwx 1 root root 0 Nov 29 10:49 28-0317249ce7ff -> ../../../devices/w1_bus_master1/28-0317249ce7ff<br>
+lrwxrwxrwx 1 root root 0 Nov 29 10:49 w1_bus_master1 -> ../../../devices/w1_bus_master1`<br>
 
 Каждый датчик имеет уникальный номер. Находим ID датчика. В моем случае 28-0317249ce7ff.<br>
 
@@ -112,24 +112,24 @@ lrwxrwxrwx 1 root root 0 Nov 29 10:49 w1_bus_master1 -> ../../../devices/w1_bus_
 
 ### *Возможные ошибки*
 1. Не правильный i2c адрес дисплея или дисплей не найден.<br>
-Укажите свой адрес дисплея (*прим.* обычно *0x27* или *0x3F*) и проверьте соединения.
-<p>`Traceback (most recent call last):
-  File "./dispy.py", line 146, in <module>
-    lcd_byte(0x01, LCD_CMD)
-  File "./dispy.py", line 99, in lcd_byte
-    bus.write_byte(I2C_ADDR, bits_high)
-IOError: [Errno 121] Remote I/O error`</p>
+Укажите свой адрес дисплея (*прим.* обычно *0x27* или *0x3F*) и проверьте соединения.<br>
+`Traceback (most recent call last):<br>
+  File "./dispy.py", line 146, in <module><br>
+    lcd_byte(0x01, LCD_CMD)<br>
+  File "./dispy.py", line 99, in lcd_byte<br>
+    bus.write_byte(I2C_ADDR, bits_high)<br>
+IOError: [Errno 121] Remote I/O error`<br>
 
 2. Не правильный ID датчика DS18B20 или датчик не найден.<br>
-Укажите свой ID датчка и проверьте соединения. Если данный датчик не используется, то просто отключите его вывод просто закомментировав строку.
-<p>`Traceback (most recent call last):
-  File "./dispy.py", line 142, in <module>
-    main()
-  File "./dispy.py", line 136, in main
-    lcd_string("DS18B20 Temp:{}".format(get_dallas()),LCD_LINE_2)
-  File "./dispy.py", line 77, in get_dallas
-    tfile=open("/sys/bus/w1/devices/28-0317249ce7ff/w1_slave")
-IOError: [Errno 2] No such file or directory: '/sys/bus/w1/devices/28-0317249ce7ff/w1_slave'`</p>
+Укажите свой ID датчка и проверьте соединения. Если данный датчик не используется, то просто отключите его вывод просто закомментировав строку.<br>
+`Traceback (most recent call last):<br>
+  File "./dispy.py", line 142, in <module><br>
+    main()<br>
+  File "./dispy.py", line 136, in main<br>
+    lcd_string("DS18B20 Temp:{}".format(get_dallas()),LCD_LINE_2)<br>
+  File "./dispy.py", line 77, in get_dallas<br>
+    tfile=open("/sys/bus/w1/devices/28-0317249ce7ff/w1_slave")<br>
+IOError: [Errno 2] No such file or directory: '/sys/bus/w1/devices/28-0317249ce7ff/w1_slave'`<br>
 
 <a id="chapter-7"></a>
 
