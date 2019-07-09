@@ -43,6 +43,18 @@
 <a id="chapter-2"></a>
 
 ### *Подключение*
+Raspberry PI  | LCD 2004
+------------- | -------------
+         5V   |   5V
+         SDA  |   SDA
+         SCL  |   SCL
+         GND  |   GND
+
+Raspberry PI  | DS18B20
+------------- | -------------
+         5V   |   5V
+       GPIO7  |   DATA
+         GND  |   GND
 
 <a id="chapter-3"></a>
 
@@ -62,7 +74,7 @@
 <a id="chapter-4"></a>
 
 ### *Настройки скрипта*
-0. Для отключения вывода какой-либо необходимо просто закомментировать строку в скрипте с через знак `#`.
+0. Для отключения вывода какой-либо необходимо просто закомментировать строку в скрипте через знак `#`.
 
 1. Адрес дисплея.
 В строке `I2C_ADDR  = 0x27`.
@@ -70,61 +82,61 @@
 Как? - См. ниже.
 
 2. ID - датчика DS18B20.
-В строке `tfile=open("/sys/bus/w1/devices/28-0317249ce7ff/w1_slave")`.
+В строке `tfile=open("/sys/bus/w1/devices/28-0317249ce7ff/w1_slave")`.<br>
 `28-0317249ce7ff` - заменить на ваш ID.
 
 3. Вывод состояния памяти внешнего хранилища.
-В строке `hdd = run_cmd ("df -BMB | grep /mnt/*** | awk '{print $2\"/\"$3, $5}'")`
+В строке `hdd = run_cmd ("df -BMB | grep /mnt/*** | awk '{print $2\"/\"$3, $5}'")`<br>
 Там где - `/mnt/***` прописать вашу точку монтирования.
 
-<a id="chapter-65></a>
+<a id="chapter-5></a>
 
 ### *Настройка*
-1. Адрес дисплея:
-`sudo i2cdetect -y 1`
-Будет выведена таблица, где обычно 27 или 3F - это и есть адрес дисплея. 
-2. ID датчика DS18B20:
-После подключения датчика выполняем следующие команды:
-1. `sudo modprobe w1-gpio && sudo modprobe w1_therm`
-2. `ls -l /sys/bus/w1/devices/`
+1. Адрес дисплея:<br>
+`sudo i2cdetect -y 1`<br>
+Будет выведена таблица, где обычно 27 или 3F - это и есть адрес дисплея. <br>
+2. ID датчика DS18B20:<br>
+После подключения датчика выполняем следующие команды:<br>
+1. `sudo modprobe w1-gpio && sudo modprobe w1_therm`<br>
+2. `ls -l /sys/bus/w1/devices/`<br>
 
 Будет выведена похожая информация:
-`total 0
+<p>`total 0
 total 0
 lrwxrwxrwx 1 root root 0 Nov 29 10:49 28-0317249ce7ff -> ../../../devices/w1_bus_master1/28-0317249ce7ff
-lrwxrwxrwx 1 root root 0 Nov 29 10:49 w1_bus_master1 -> ../../../devices/w1_bus_master1`
+lrwxrwxrwx 1 root root 0 Nov 29 10:49 w1_bus_master1 -> ../../../devices/w1_bus_master1`</p>
 
-Каждый датчик имеет уникальный номер. Находим ID датчика. В моем случае 28-0317249ce7ff.
+Каждый датчик имеет уникальный номер. Находим ID датчика. В моем случае 28-0317249ce7ff.<br>
 
 <a id="chapter-6"></a>
 
 ### *Возможные ошибки*
-1. Не правильный i2c адрес дисплея или дисплей не найден.
+1. Не правильный i2c адрес дисплея или дисплей не найден.<br>
 Укажите свой адрес дисплея (*прим.* обычно *0x27* или *0x3F*) и проверьте соединения.
-`Traceback (most recent call last):
+<p>`Traceback (most recent call last):
   File "./dispy.py", line 146, in <module>
     lcd_byte(0x01, LCD_CMD)
   File "./dispy.py", line 99, in lcd_byte
     bus.write_byte(I2C_ADDR, bits_high)
-IOError: [Errno 121] Remote I/O error`
+IOError: [Errno 121] Remote I/O error`</p>
 
-2. Не правильный ID датчика DS18B20 или датчик не найден.
+2. Не правильный ID датчика DS18B20 или датчик не найден.<br>
 Укажите свой ID датчка и проверьте соединения. Если данный датчик не используется, то просто отключите его вывод просто закомментировав строку.
-`Traceback (most recent call last):
+<p>`Traceback (most recent call last):
   File "./dispy.py", line 142, in <module>
     main()
   File "./dispy.py", line 136, in main
     lcd_string("DS18B20 Temp:{}".format(get_dallas()),LCD_LINE_2)
   File "./dispy.py", line 77, in get_dallas
     tfile=open("/sys/bus/w1/devices/28-0317249ce7ff/w1_slave")
-IOError: [Errno 2] No such file or directory: '/sys/bus/w1/devices/28-0317249ce7ff/w1_slave'`
+IOError: [Errno 2] No such file or directory: '/sys/bus/w1/devices/28-0317249ce7ff/w1_slave'`</p>
 
 <a id="chapter-7"></a>
 
 ### *Changelog*
----08.07.2019---
-Добавлен вывод загрузки CPU;
-Другой способ вывода UPtime;
-Наполнение readme;
+---08.07.2019---<br>
+Добавлен вывод загрузки CPU;<br>
+Другой способ вывода UPtime;<br>
+Наполнение readme;<br>
 
 > Часть кода скрипта найден на просторах интернета.
