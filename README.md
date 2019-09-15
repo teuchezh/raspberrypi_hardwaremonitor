@@ -1,5 +1,5 @@
 # Raspberry Pi Hardware Monitor
-![PROJECT PHOTO] (https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/0.png)
+![PROJECT PHOTO](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/0.png)
 
 * [Перейти на Русский](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/REAME_RU.md)
 * [INFO](#chapter-0)
@@ -7,43 +7,43 @@
 * [Connection](#chapter-2)
 * [Installation](#chapter-3)
 * [Script settings](#chapter-4)
-* [Setup](# chapter-5)
+* [Setup](#chapter-5)
 * [Possible errors](#chapter-6)
-* [Cahngelog](# chapter-7)
+* [Cahngelog](#chapter-7)
 
 <a id="chapter-0"></a>
 
 ### *Hardware Monitor for Raspberry Pi*
 
 ![PIC0](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/1.png)
-![PIC1] (https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/2.png)
+![PIC1](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/2.png)
 
 Displays information on the LCD2004 display.
 What is displayed?
 Currently done:
- - *Output IP address.*
- - *RAM loading output.*
- - *Displays the status of the SD card's memory.*
- - *Displays the memory status of external media (approx. HDD / SSD).*
- - *Uptime output.*
- - *CPU temperature output.*
- - *Temperature output from external sensor DS18B20.*
- - *Displays the current date.*
+- *Output IP address.*
+- *RAM loading output.*
+- *Displays the status of the SD card's memory.*
+- *Displays the memory status of external media (approx. HDD / SSD).*
+- *Uptime output.*
+- *CPU temperature output.*
+- *Temperature output from external sensor DS18B20.*
+- *Displays the current date.*
 
 The plans to do:
- - *Add fan control.*
- - *Break the script into pieces.*
+- *Add fan control.*
+- *Break the script into pieces.*
 
  <a id="chapter-1"></a>
 
- ### *System requirements*
- * Requires installed *Python.*
- * You must enable *i2c.*
- * You must enable *1-Wire.*
+### *System requirements*
+ *Requires installed *Python.*
+ *You must enable *i2c.*
+ *You must enable *1-Wire.*
 
 <a id="chapter-2"></a>
 
-### * Connection *
+### *Connection*
 Raspberry PI | LCD 2004
 -------------| -------------
          5V  | 5V
