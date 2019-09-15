@@ -1,7 +1,7 @@
 # Raspberry Pi Hardware Monitor
 ![PROJECT PHOTO](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/pics/0.png)
 
-* [Перейти на Русский](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/REAME_RU.md)
+* [Перейти на Русский](https://github.com/Cherkes001/raspberrypi_hardwaremonitor/blob/master/README_RU.md)
 * [INFO](#chapter-0)
 * [System requirements](#chapter-1)
 * [Connection](#chapter-2)
