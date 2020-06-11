@@ -9,7 +9,6 @@ import sys
 import smbus
 import time
 import datetime
-import subprocess
 from subprocess import check_output         # Импортируем библиотеку по работе с внешними процессами
 from re import findall                      # Импортируем библиотеку по работе с регулярными выражениями
 import os
@@ -38,7 +37,7 @@ E_DELAY = 0.0005
 bus = smbus.SMBus(1) # Rev 2 Pi uses 1
 
 def run_cmd(cmd):
-    return subprocess.check_output(cmd, shell=True).decode('utf-8')
+    return check_output(cmd, shell=True).decode('utf-8')
 
 #Запрос IP-адреса
 def get_my_ipwlan():
@@ -135,7 +134,6 @@ def main():
   lcd_init()
   while True:
     now = datetime.datetime.now()
-    temp = get_temp()
 
     lcd_string("IP:{}".format(get_my_ipwlan()),LCD_LINE_1) #IP-адрес
     lcd_string("RAM:{}".format(get_memusage()),LCD_LINE_2) #Использование RAM
