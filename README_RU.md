@@ -72,9 +72,13 @@ Raspberry PI  | DS18B20
 `./hardware_monitor.py`
 
 ### *Автозапуск*
-1)
-2)
-3)
+Дополнение от @alexinario
+Если делали по инструкции, то скрипт окажется в данной директории, далее прописываете данные команды:  
+
+`sudo cp -i /home/pi/raspberrypi_hardwaremonitor/hardware_monitor.py /bin`  
+`sudo crontab -e`  
+Добавить в crontab:  
+`@reboot python /bin/hardware_monitor.py &`  
 
 <a id="chapter-4"></a>
 
@@ -146,5 +150,11 @@ IOError: [Errno 2] No such file or directory: '/sys/bus/w1/devices/28-0317249ce7
 Добавлен вывод загрузки CPU;<br>
 Другой способ вывода UPtime;<br>
 Наполнение readme;<br>
+
+---20.06.2020---<br>
+Коммит @wildrun0;<br>
+
+---19.11.2020---<br>
+Обновление Readme;<br>
 
 > Часть кода скрипта найден на просторах интернета.
